@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <!-- CSS1ファイルを読み込む -->
+    <link rel="stylesheet" href="create.css">
+    <title>らくらくwebプログラミング</title>
+</head>
+<body>
+    <div id="header">
+        <h2 id="header_text">らくらくWebプログラミング(仮)</h2>
+    </div>
+
+    <div id="body">
+        <!-- レイアウトプレビューの部分 -->
+        <div id="preview">
+            <div id="v_webpage">
+                <!-- ここにJSで要素を追加していく -->
+            </div>
+        </div>
+        <!-- プロパティ・コードの部分 -->
+        <div id="toolbar">
+            <!-- 要素の新規作成ボタン -->
+            <div id="create">
+                <div id="create_text">要素の作成<br></div>
+                    <select id="template_select">
+                        <option value="true,A">テキスト</option>
+                        <option value="false,B">見出し</option>
+                        <option value="true,C">リンク</option>
+                        <option value="false,D">リスト</option>
+                    </select>
+                    <input type="text" id="text" value="" autocomplete="off">
+                    <input type="text" style="display:none;">
+                    <input type="checkbox" id="br_flag"><label for="br_flag">改行</label>
+                    <input type="button" id="create_item" value="追加する">
+                </div>
+            </div>
+
+            <div id="options">
+
+            </div>
+
+        </div>  
+    </div>
+
+    <!-- JavaScriptファイルを読み込む -->
+    <script type="text/javascript" src="create.js"></script>
+</body>
+</html>
