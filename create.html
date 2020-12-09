@@ -8,38 +8,43 @@
 </head>
 <body>
     <div id="header">
-        <h2 id="header_text">らくらくWebプログラミング(仮)</h2>
+        <div id="header_title">
+            <h2 id="header_title_text">らくらくWebプログラミング(仮)</h2>
+        </div>
     </div>
 
-    <div id="body">
+    <div id="app_body">
         <!-- レイアウトプレビューの部分 -->
         <div id="preview">
-            <div id="v_webpage">
+            <div id="virtual_web_contents">
                 <!-- ここにJSで要素を追加していく -->
             </div>
         </div>
         <!-- プロパティ・コードの部分 -->
         <div id="toolbar">
             <!-- 要素の新規作成ボタン -->
-            <div id="create">
-                <div id="create_text">要素の作成<br></div>
+            <div id="create_item">
+                <div id="create_item_header">要素の作成<br></div>
                     <select id="template_select">
                         <option value="true,A">テキスト</option>
                         <option value="false,B">見出し</option>
                         <option value="true,C">リンク</option>
                         <option value="false,D">リスト</option>
                     </select>
-                    <input type="text" id="text" value="" autocomplete="off">
-                    <input type="text" style="display:none;">
+                    <input type="text" id="new_item_text" value="" autocomplete="off">
+                    <input type="text" class="dummy" style="display:none;">
                     <input type="checkbox" id="br_flag"><label for="br_flag">改行</label>
-                    <input type="button" id="create_item" value="追加する">
+                    <input type="button" id="create_item_button" value="追加する">
+                </div>
+                <!-- 編集 -->
+                <div id="edit">
+                    テキスト:<input type="text" id="edit_text" value="" autocomplete="off">
+                    <input type="text" class="dummy" style="display:none;">
+                </div>
+                <div id="delete">
+                    <input type="button" id="delete_item_button" value="削除する">
                 </div>
             </div>
-
-            <div id="options">
-
-            </div>
-
         </div>  
     </div>
 

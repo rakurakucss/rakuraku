@@ -1,21 +1,25 @@
-document.getElementById("create_item").onclick=function(){
-    var randId=Math.floor(Math.random() * 1000000 );    //乱数id生成
+var edittext=document.getElementById("edit_text");
+var selected_radiobutton;
+
+//作成
+document.getElementById("create_item_button").onclick=function(){
+    var newItemId=Math.floor(Math.random() * 1000000 );    //乱数id生成
     
     //要素テンプレの取得
     var temp=document.getElementById("template_select")
     var templates=temp.options[temp.selectedIndex].value.split(',');
     //改行フラグの確認
-    if(document.getElementById("br_flag").checked) document.getElementById("v_webpage").appendChild(document.createElement('br')); //改行
+    if(document.getElementById("br_flag").checked) document.getElementById("virtual_web_contents").appendChild(document.createElement('br')); //改行
 
     //チェックボックス用のラベル作成
     var newLabel=document.createElement('label');       //ラベルを生成
-    newLabel.setAttribute('id',randId+"_lbl");          //IDを設定
-    newLabel.setAttribute('for',randId+"_cb");          //チェックボックスの判定を継承
-    document.getElementById("v_webpage").appendChild(newLabel); //ラベルを追加
+    newLabel.setAttribute('id',newItemId+"_lbl");          //IDを設定
+    newLabel.setAttribute('for',newItemId+"_cb");          //チェックボックスの判定を継承
+    document.getElementById("virtual_web_contents").appendChild(newLabel); //ラベルを追加
     
     //Div要素作成
     var newDiv=document.createElement('div');           //DIVを生成
-    newDiv.setAttribute('id',randId+"_div");            //IDを設定
+    newDiv.setAttribute('id',newItemId+"_div");            //IDを設定
     newDiv.setAttribute('class',"createItem");            //CLASSを設定
     if(templates[0]=="true"){
         newDiv.style.display="inline-block";                //とりあえずinline-blockにしとく
@@ -25,10 +29,12 @@ document.getElementById("create_item").onclick=function(){
     //選択して編集できるように外枠にチェックボックスを作る
     var newCheckBox=document.createElement('input');    //INPUTを作成
     newCheckBox.setAttribute('type','radio');           //ラジオボタンにする
-    newCheckBox.setAttribute('id',randId+"_cb");        //IDを設定
-    newCheckBox.setAttribute('name',"radio");           //NAMEを設定 ラジオボタンが連動する
+    newCheckBox.setAttribute('id',newItemId+"_cb");        //IDを設定
+    newCheckBox.setAttribute('name',"items_radiobutton");           //NAMEを設定 ラジオボタンが連動する
     newCheckBox.setAttribute('checked',"checked");      //新しい要素を作成したとき選択済みにする
+    newCheckBox.setAttribute('onchange',"selectedItem(this)");
     newDiv.appendChild(newCheckBox);                    //DIVにINPUTを追加
+    selected_radiobutton=newCheckBox;
     
     //中身の要素|テキスト作成(仮)
     if(templates[1]=="A"){
@@ -43,15 +49,34 @@ document.getElementById("create_item").onclick=function(){
         var newText=document.createElement('li');
     }
     
-    var text=document.getElementById("text").value;     //指定されたテキストを取得
-    if(text){
-        newText.innerHTML=text;    //中身の本文を設定
+    var text=document.getElementById("new_item_text");     //指定されたテキストを取得
+    if(text.value){
+        newText.innerHTML=text.value;    //中身の本文を設定
+        text.value="";           //テキストボックスをクリア
     }else{
-        newText.innerHTML="null:"+randId;               //なければIDを表示
+        newText.innerHTML="null:"+newItemId;               //なければIDを表示
     }
+    newText.setAttribute('id',newItemId+"_child");
+    newCheckBox.value=newItemId+"_child";
     newDiv.appendChild(newText);                        //DIVにDIVを追加
     console.log("create item!");
     document.getElementById("br_flag").checked=false;   //改行フラグのチェックを解除
-    document.getElementById("text").value="";           //テキストボックスをクリア
     
+}
+
+//編集
+function selectedItem(e){
+    selected_radiobutton=e;
+    edittext.value=document.getElementById(selected_radiobutton.value).innerHTML;
+}
+
+edittext.addEventListener('input',()=>{     //formTestInputValueにinputがされたら
+    document.getElementById(selected_radiobutton.value).innerHTML=edittext.value;
+});
+
+//削除
+document.getElementById("delete_item_button").onclick=function(){
+    parent=selected_radiobutton.parentNode.parentNode;
+    parent.remove();
+    console.log("delete");
 }
