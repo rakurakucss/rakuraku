@@ -1,12 +1,33 @@
 var editTxtboxElm=document.getElementById("editTxtbox");
+var editTxtColorElm=document.getElementById("editTxtColor");
 var selectedRb;
 var selectedRackItemElm;
+
+window.addEventListener('beforeunload',function(e){
+  e.returnValue="";
+},false);
 
 //選択されたアイテムとテキストボックスを連動
 function selectedRack(e){
   selectedRb=e;
-  selectedRackItemElm=document.getElementById(selectedRb.value)
+  selectedRackItemElm=document.getElementById(selectedRb.value);
   editTxtboxElm.value=selectedRackItemElm.innerHTML;
+  editTxtColorElm.value=toHex(selectedRackItemElm.style.color);
+
+}
+
+//RGB->HEX変換
+function toHexColor(color){
+  color=color.replace(/[(rgb(|))]/g,"");
+  color=color.split(', ');
+  hex="#" + componentToHex(color[0]) + componentToHex(color[1]) + componentToHex(color[2]);
+  return hex;
+}
+
+//16進数変換
+function toHex(c) {
+  var hex = Number(c).toString(16);
+  return hex.length == 1 ? "0" + hex : hex;
 }
 
 //作成
@@ -21,9 +42,11 @@ document.getElementById("createRackBtn").onclick=function(){
   if(document.getElementById("brFlg").checked) document.getElementById("cnvsView").appendChild(document.createElement('br')); //改行
 
   //ラジオボタン用のラベル作成
-  var newLabel=document.createElement('label');       //ラベルを生成
+  var newLabel=document.createElement('label');         //ラベルを生成
   newLabel.setAttribute('id',newRackId+"Lbl");          //IDを設定
+  newLabel.setAttribute('class',"Lbl");                 //classを設定
   newLabel.setAttribute('for',newRackId+"Rb");          //ラジオボタンの判定を継承
+  newLabel.setAttribute('draggable',"true");            //ドラッグできるように
   document.getElementById("cnvsView").appendChild(newLabel); //ラベルを追加
   
   //Div要素作成
@@ -67,6 +90,7 @@ document.getElementById("createRackBtn").onclick=function(){
     newRackItem.innerHTML="null:"+newRackId;               //なければIDを表示
   }
   newRackItem.setAttribute('id',newRackId+"Child");
+  newRackItem.setAttribute('style',"color:#000000;");     //初期の色
   newRb.value=newRackId+"Child";
   newDiv.appendChild(newRackItem);                        //DIVにDIVを追加
   console.log("create item!");
@@ -82,6 +106,12 @@ editTxtboxElm.addEventListener('input',()=>{     //formTestInputValueにinputが
   }
 });
 
+editTxtColorElm.addEventListener('input',()=>{     //formTestInputValueにinputがされたら
+    selectedRackItemElm.style.color=editTxtColorElm.value;
+});
+
+
+
 //削除
 //削除ボタンが押されたら実行
 document.getElementById("deleteRackBtn").onclick=function(){
@@ -90,5 +120,22 @@ document.getElementById("deleteRackBtn").onclick=function(){
     rackParentElm.remove();                                    //要素を削除
     editTxtboxElm.value="";
     console.log("delete item!");
+  }
+}
+
+//要素を前に移動
+document.getElementById("movePrevRackBtn").onclick=function(){
+  rackParentElm=selectedRb.parentNode.parentNode;
+  var prevRackElm=rackParentElm.previousElementSibling;
+  if(prevRackElm!==null){
+    document.getElementById("cnvsView").insertBefore(rackParentElm, prevRackElm);
+  }
+}
+//要素を後ろに移動
+document.getElementById("moveNextRackBtn").onclick=function(){
+  rackParentElm=selectedRb.parentNode.parentNode;
+  var nextRackElm=rackParentElm.nextElementSibling;
+  if(nextRackElm!==null){
+    document.getElementById("cnvsView").insertBefore(nextRackElm,rackParentElm);
   }
 }

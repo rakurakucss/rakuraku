@@ -56,12 +56,22 @@
       <!-- 編集 -->
       <div class="edit" id="edit">
         <div class="toolbar-ttl edit-ttl" id="editHeader">要素の編集<br></div>
-          テキスト:<input type="text" id="editTxtbox" value="" autocomplete="off">
+          <input type="button" class="btn" id="movePrevRackBtn" value="prev">
+          <input type="button" class="btn" id="moveNextRackBtn" value="next">
+          <label>innerHTML</label><input type="text" class="txtbox" id="editTxtbox" value="" autocomplete="off"><br>
+          <label>textcolor</label><input type="color" class="txt-color" id="editTxtColor" value="#000000"><br>
           <input type="text" class="dummy">
           <input type="button" class="btn" id="deleteRackBtn" value="削除">
+          
         </div>
       </div>
       <!-- /編集 -->
+
+      <!-- コード -->
+      <div class="code" id="code">
+
+      </div>
+      <!-- /コード -->
 
     </div>  
     <!-- /プロパティ・コードの部分 -->

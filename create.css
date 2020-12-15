@@ -3,6 +3,9 @@
   border-bottom: solid 2px black;
   margin: 0;
 }
+.header-ttl{
+  padding: 2px 5px;
+}
 
 .ccrs-body{
   position: relative;
@@ -44,6 +47,12 @@
   background-color: white;
 }
 
+.txtbox{
+  width:40%;
+  height:20px;
+  font-size: 12px;
+}
+
 .create{
   padding: 5px;
   border-bottom: solid 2px black;
@@ -65,5 +74,5 @@ input[name=Racks_Rb]:checked ~*{
     background-color: rgba(0, 255, 200, 0.5);
 }
 input[name=Hidden_Toolbar]:checked + .toolbar{
-  display:none;
+  display: none;
 }
