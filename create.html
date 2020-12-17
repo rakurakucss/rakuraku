@@ -41,10 +41,10 @@
       <div class="create" id="create">
         <div class="toolbar-ttl create-ttl" id="createHeader">要素の作成<br></div>
         <select id="moldSelect">
-          <option class="mold-opt" value="true,A">テキスト</option>
-          <option class="mold-opt" value="false,B">見出し</option>
-          <option class="mold-opt" value="true,C">リンク</option>
-          <option class="mold-opt" value="false,D">リスト</option>
+          <option class="mold-opt" value="true,div,16">テキスト</option>
+          <option class="mold-opt" value="false,h1,32">見出し</option>
+          <option class="mold-opt" value="true,a,16">リンク</option>
+          <option class="mold-opt" value="false,li,16">リスト</option>
         </select>
         <input type="text" class="txtbox" id="newRackTxtbox" value="" autocomplete="off">
         <input type="text" class="dummy">
@@ -58,8 +58,10 @@
         <div class="toolbar-ttl edit-ttl" id="editHeader">要素の編集<br></div>
           <input type="button" class="btn" id="movePrevRackBtn" value="prev">
           <input type="button" class="btn" id="moveNextRackBtn" value="next">
+          <input type="checkbox" class="cb" id="editBrFlg" onchange="selectedRackBrCb(this)"><label class="lbl" for="editBrFlg">改行</label><br>
           <label>innerHTML</label><input type="text" class="txtbox" id="editTxtbox" value="" autocomplete="off"><br>
           <label>textcolor</label><input type="color" class="txt-color" id="editTxtColor" value="#000000"><br>
+          <label>fontsize</label><input type="number" class="txt-size" id="editTxtsizeTxtbox" min="10" max="50"><br>
           <input type="text" class="dummy">
           <input type="button" class="btn" id="deleteRackBtn" value="削除">
           
