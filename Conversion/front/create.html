@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <!-- CSSファイルを読み込む -->
+  <link rel="stylesheet" href="destyle.css">
+  <link rel="stylesheet" href="default.css">
+  <link rel="stylesheet" href="create.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <!-- タイトル未定 -->
+  <title>らくらくwebプログラミング</title>
+</head>
+<body>
+
+  <!-- ページのヘッダー -->
+  <div class="header" id="ccrsHeader">
+    <div class="header-ttl" id="ccrsHeaderTtl">
+      <h2 class="header-ttl-txt" id="ccrsHeaderTtlTxt">らくらくWebプログラミング(仮)</h2>
+    </div>
+  </div>
+  <!-- /ページのヘッダー -->
+
+
+  <!-- ページのメイン -->
+  <div class="ccrs-body" id="ccrsBody">
+    <!-- レイアウトプレビューの部分 -->
+    <div class="cnvs" id="cnvs">
+      <!-- CNVS全体 -->
+      <div class="cnvs-conts" id="cnvsConts">
+        <!-- 実際に見える部分 -->
+        <div class="preview" id="cnvsView">
+            <!-- ここにJSで要素を追加していく -->
+        </div>
+      </div>
+    </div>
+    <!-- /レイアウトプレビューの部分 -->
+
+    <input type="checkbox" class="toolbar-hidden-cb" id="toolbarHiddenCb" name="Hidden_Toolbar">
+    <!-- プロパティ・コードの部分 -->
+    <div class="toolbar" id="toolbar">
+      <!-- 作成 -->
+      <div class="create" id="create">
+        <div class="toolbar-ttl create-ttl" id="createHeader">要素の作成<br></div>
+        <select id="moldSelect">
+          <option class="mold-opt" value="true,A">テキスト</option>
+          <option class="mold-opt" value="false,B">見出し</option>
+          <option class="mold-opt" value="true,C">リンク</option>
+          <option class="mold-opt" value="false,D">リスト</option>
+        </select>
+        <input type="text" class="txtbox" id="newRackTxtbox" value="" autocomplete="off">
+        <!-- <input type="text" class="dummy"> -->
+        <input type="checkbox" class="cb" id="brFlg"><label class="lbl" for="brFlg">改行</label>
+        <input type="button" class="btn" id="createRackBtn" value="追加">
+      </div>
+      <!-- /作成 -->
+
+      <!-- 編集 -->
+      <div class="edit" id="edit">
+        <div class="toolbar-ttl edit-ttl" id="editHeader">要素の編集<br></div>
+          <input type="button" class="btn" id="movePrevRackBtn" value="prev">
+          <input type="button" class="btn" id="moveNextRackBtn" value="next">
+          <label>innerHTML</label><input type="text" class="txtbox" id="editTxtbox" value="" autocomplete="off"><br>
+          <label>textcolor</label><input type="color" class="txt-color" id="editTxtColor" value="#000000"><br>
+          <!-- <input type="text" class="dummy"> -->
+          <input type="button" class="btn" id="deleteRackBtn" value="削除">
+          
+        </div>
+        <!-- /編集 -->
+        
+        <!-- コード -->
+        <div class="code" id="code">
+      
+        </div>
+        <!-- /コード -->
+    </div>
+
+    </div>  
+    <!-- /プロパティ・コードの部分 -->
+
+  </div>
+  <!-- /ページのメイン -->
+
+
+  <!-- ページのフッター -->
+  <div class="footer">
+
+  </div>
+  <!-- /ページのフッター -->
+
+  <!-- JavaScriptファイルを読み込む -->
+  <script type="text/javascript" src="create.js"></script>
+</body>
+</html>
