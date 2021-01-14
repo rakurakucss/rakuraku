@@ -12,12 +12,14 @@
 </head>
 <body>
 
+  
+
   <!-- ページのヘッダー -->
-  <div class="header" id="ccrsHeader">
+  <!-- <div class="header" id="ccrsHeader">
     <div class="header-ttl" id="ccrsHeaderTtl">
-      <h2 class="header-ttl-txt" id="ccrsHeaderTtlTxt">らくらくWebプログラミング(仮)</h2>
+      <h2 class="header-ttl-txt select-block" id="ccrsHeaderTtlTxt">らくらくWebプログラミング(仮)</h2>
     </div>
-  </div>
+  </div> -->
   <!-- /ページのヘッダー -->
 
 
@@ -37,42 +39,53 @@
 
     <input type="checkbox" class="toolbar-hidden-cb" id="toolbarHiddenCb" name="Hidden_Toolbar">
     <!-- プロパティ・コードの部分 -->
-    <div class="toolbar" id="toolbar">
-      <!-- 作成 -->
-      <div class="create" id="create">
-        <div class="toolbar-ttl create-ttl" id="createHeader">要素の作成<br></div>
-        <select id="moldSelect">
-          <option class="mold-opt" value="true,A">テキスト</option>
-          <option class="mold-opt" value="false,B">見出し</option>
-          <option class="mold-opt" value="true,C">リンク</option>
-          <option class="mold-opt" value="false,D">リスト</option>
-        </select>
-        <input type="text" class="txtbox" id="newRackTxtbox" value="" autocomplete="off">
-        <!-- <input type="text" class="dummy"> -->
-        <input type="checkbox" class="cb" id="brFlg"><label class="lbl" for="brFlg">改行</label>
-        <input type="button" class="btn" id="createRackBtn" value="追加">
-      </div>
-      <!-- /作成 -->
+    <div class="toolbar-area">
+      <div class="toolbar" id="toolbar">
+        <!-- 作成 -->
+        <div class="create select-block" id="create">
+          <div class="toolbar-ttl create-ttl" id="createHeader">要素の作成<br></div>
+          <select id="moldSelect">
+            <option class="mold-opt" value="true, div, 16">テキスト</option>
+            <option class="mold-opt" value="false, h1, 32">見出し</option>
+            <option class="mold-opt" value="true, a, 16">リンク</option>
+            <option class="mold-opt" value="false, li, 16">リスト</option>
+          </select>
+          <input type="text" class="txtbox" id="newRackTxtbox" value="" autocomplete="off">
+          <input type="text" class="dummy">
+          <input type="checkbox" class="cb" id="brFlg"><label class="lbl" for="brFlg">改行</label>
+          <input type="button" class="btn" id="createRackBtn" value="追加">
+        </div>
+        <!-- /作成 -->
 
-      <!-- 編集 -->
-      <div class="edit" id="edit">
-        <div class="toolbar-ttl edit-ttl" id="editHeader">要素の編集<br></div>
-          <input type="button" class="btn" id="movePrevRackBtn" value="prev">
-          <input type="button" class="btn" id="moveNextRackBtn" value="next">
-          <label>innerHTML</label><input type="text" class="txtbox" id="editTxtbox" value="" autocomplete="off"><br>
-          <label>textcolor</label><input type="color" class="txt-color" id="editTxtColor" value="#000000"><br>
-          <!-- <input type="text" class="dummy"> -->
-          <input type="button" class="btn" id="deleteRackBtn" value="削除">
-          
+        <!-- 編集 -->
+        <div class="edit select-block" id="edit">
+          <div class="toolbar-ttl edit-ttl" id="editHeader">要素の編集<br></div>
+            <input type="button" class="btn" id="movePrevRackBtn" value="prev">
+            <input type="button" class="btn" id="moveNextRackBtn" value="next">
+            <input type="checkbox" class="cb" id="editBrFlg" onchange="selectedRackBrCb(this)"><label class="lbl" for="editBrFlg">改行</label><br>
+            <label>innerHTML</label><input type="text" class="txtbox" id="editTxtbox" value="" autocomplete="off"><br>
+            <label>textcolor</label><input type="color" class="txt-color" id="editTxtColor" value="#000000"><br>
+            <label>labelcolor</label><input type="color" class="txt-bgcolor" id="editTxtBgcolor" value="#ffffff"><br>
+            <label>fontsize</label><input type="number" class="txt-size" id="editTxtsizeTxtbox" min="10" max="50" step="0.1"><br>
+            <label>margin</label><input type="number" class="txt-margin" id="editTxtMarginTxtbox" min="0" max="50" step="0.1"><br>
+            <label>padding</label><input type="number" class="txt-padding" id="editTxtPaddingTxtbox" min="0" max="50" step="0.1"><br>
+            <label>border</label><input type="number" class="txt-border" id="editTxtBorderTxtbox" min="0" max="50" step="0.1">
+            <input type="color" class="border-color" id="editBorderColor" value="#000000"><br>
+            <input type="text" class="dummy">
+            <input type="button" class="btn" id="deleteRackBtn" value="削除">
+            <br><div class="toolbar-ttl">ページ設定</div>
+            <label>padding</label><input type="number" class="page-padding" id="editPagePaddingTxtbox" min="0" max="50" step="0.1"><br>
+            <label>bgcolor</label><input type="color" class="page-bgcolor" id="editPageBgcolor" value="#ffffff"><br>
+          </div>
+          <!-- コード -->
+          <div class="code" id="code">
+    
+          </div>
+          <!-- /コード -->
         </div>
-        <!-- /編集 -->
-        
-        <!-- コード -->
-        <div class="code" id="code">
-      
-        </div>
-        <!-- /コード -->
-    </div>
+      </div>
+      <!-- /編集 -->
+
 
     </div>  
     <!-- /プロパティ・コードの部分 -->
