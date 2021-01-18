@@ -83,6 +83,14 @@ html {
   background-color: white;
 }
 
+.code{
+  height:155px;
+  padding: 5px;
+  bottom: 0;
+  background-color: white;
+  overflow-y: scroll;
+}
+
 .toolbar-ttl{
   text-align: center;
 }
