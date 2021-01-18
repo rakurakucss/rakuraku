@@ -1,5 +1,8 @@
 <?php
+$tab = "    ";//'&nbsp;&nbsp;&nbsp;&nbsp;';      //TABキー変わり
+$chechary = array_fill(0, 39, 0);
 class template {
+
 
     public function header($title)
     {
@@ -22,6 +25,7 @@ class template {
     
     public function div($class, $id, $contents)
     {
+        global $chechary;
         $tmp = '<div';
         
         if (!empty($class)) {
@@ -31,6 +35,10 @@ class template {
         }
         
         $tmp .= '>'. "\n";
+        if ($chechary[2] == 0) {
+            $tmp .= '<!-- <div>で囲った部分をブロックレベル要素としてグループ化することができるタグです。 -->'. "\n";
+            $chechary[2] = 1;
+        }
         $tmp .= $contents. "\n";
         $tmp .= '</div>'. "\n";
         return $tmp;
@@ -54,7 +62,13 @@ class template {
 
     public function h1_6($size, $contents)
     {
+        global $chechary;
+
         $tmp = '<h'. $size. '>'. "\n";
+        if ( $chechary[4] == 0) {
+            $tmp .= "<!-- 見出しを意味するタグです。 -->". "\n";
+            $chechary[4] = 1;
+        }
         $tmp .= $contents. "\n";
         $tmp .= '</h'. $size. '>'. "\n";
         return $tmp;
@@ -83,7 +97,13 @@ class template {
 
     public function a($link, $contents)
     {
-        $tmp = '<a href="'. $link. '">'. $contents. '</a>'. "\n";
+        global $chechary;
+        $tmp = '<a href="'. $link. '">'. "\n";
+        if ( $chechary[8] == 0) {
+            $tmp .= "<!-- リンクの出発点や到達点を指定するタグです。 -->". "\n";
+            $chechary[8] = 1;
+        }
+        $tmp .= $contents. '</a>'. "\n";
         return $tmp;
     }
 
@@ -111,9 +131,14 @@ class template {
 
     public function li($contents)
     {
+        global $chechary;
         $tmp = "<li>". "\n";
+        if ($chechary[12] == 0) {
+            $tmp .= "<!-- リストの項目を表示するために使用するタグです。 -->". "\n";
+            $chechary[12] = 1;
+        }
         $tmp .= $contents. "\n";
-        $tmp .= "</li>";
+        $tmp .= "</li>". "\n";
         return $tmp;
     }
 
