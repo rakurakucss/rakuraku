@@ -83,6 +83,14 @@ html {
   background-color: white;
 }
 
+#code{
+  height:500px;
+  padding: 5px;
+  bottom: 0;
+  background-color: white;
+  overflow-y: scroll;
+}
+
 .toolbar-ttl{
   text-align: center;
 }
@@ -94,4 +102,3 @@ input[name=racks_rb]:checked ~*{
 input[name=Hidden_Toolbar]:checked + .toolbar-area{
   display: none;
 }
-
