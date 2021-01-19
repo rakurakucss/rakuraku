@@ -1,0 +1,8 @@
+/* ダミー要素を非表示 */
+.dummy{
+  display:none;
+}
+/* 非表示 */
+.enable-input{
+  display:none;   
+}
