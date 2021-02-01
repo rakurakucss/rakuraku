@@ -34,7 +34,8 @@ html {
 }
 
 .preview{
-  width: 100vw;
+  width: 30%;
+  left: 0;
   min-height: 100%;
   bottom:0px; 
 }
@@ -46,13 +47,32 @@ html {
   top:0px;
 }
 
+
+.code-area{
+  top:0px;
+  width: 30%;
+  min-height: 100%;
+  right: 30%;
+}
+
+.codebar{
+  position: fixed;
+  display: inline-block;
+  width: 30%;
+  min-height: 100%;
+  right: 30%;
+  /* border-top: solid 2px black; */
+  border-left: solid 2px black;
+  background-color: white;
+  top:0px;
+}
+
 .toolbar-area{
   top:0px;
   width: 30%;
   min-height: 100%;
   right: 0;
 }
-
 .toolbar{
   position: fixed;
   display: inline-block;
@@ -60,7 +80,7 @@ html {
   min-height: 100%;
   right: 0;
   /* border-top: solid 2px black; */
-  border-left: solid 2px black;
+  /* border-left: solid 2px black; */
   background-color: white;
   top:0px;
 }
@@ -84,11 +104,36 @@ html {
 }
 
 #code{
-  height:500px;
+  /* height:500px; */
   padding: 5px;
   bottom: 0;
-  background-color: white;
+  background-color: rgb(73, 72, 72);
+  color: white;
   overflow-y: scroll;
+
+  position: fixed;
+  display: inline-block;
+  width: 30%;
+  min-height: 100%;
+  right: 30%;
+  /* border-top: solid 2px black; */
+  border: solid 2px black;
+  top:30px;
+}
+
+.code-header{
+    height:30px;
+    padding: 5px;
+    bottom: 0;
+    background-color: black;
+    color: white;  
+    position: fixed;
+    display: inline-block;
+    width: 30%;
+    right: 30%;
+    /* border-top: solid 2px black; */
+    border: solid 2px black;
+    top:0px;
 }
 
 .toolbar-ttl{
